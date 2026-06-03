@@ -4,219 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ERA | Exam Readiness Assessment</title>
-  <meta name="description" content="ERA helps students measure exam readiness, identify weak topics, and prepare with confidence before test day." />
+  <meta name="description" content="ERA helps students measure exam readiness, identify weak topics, and request targeted assessment support before test day." />
   <style>
-    :root {
-      --primary: #123c69;
-      --secondary: #0b7285;
-      --accent: #f4a261;
-      --light: #f7f9fc;
-      --dark: #1f2933;
-      --muted: #5f6c7b;
-      --white: #ffffff;
-      --border: #e5e7eb;
+    :root{
+      --navy:#082f49;--blue:#0f766e;--teal:#14b8a6;--orange:#f97316;--soft:#f8fafc;--text:#1f2937;--muted:#64748b;--card:#ffffff;--line:#e2e8f0;
     }
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: var(--dark); background: var(--white); line-height: 1.6; }
-    a { color: inherit; text-decoration: none; }
-    .container { width: min(1120px, 92%); margin: 0 auto; }
-    header { padding: 22px 0; border-bottom: 1px solid var(--border); background: var(--white); position: sticky; top: 0; z-index: 10; }
-    .nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
-    .brand { font-weight: 800; font-size: 26px; color: var(--primary); letter-spacing: .5px; }
-    .brand span { font-weight: 500; color: var(--muted); font-size: 15px; margin-left: 8px; }
-    .nav-links { display: flex; gap: 22px; align-items: center; font-size: 15px; color: var(--muted); }
-    .btn { display: inline-block; padding: 13px 22px; background: var(--secondary); color: var(--white); border-radius: 8px; font-weight: 700; border: none; cursor: pointer; font-size: 16px; }
-    .btn:hover { opacity: .92; }
-    .btn-light { background: var(--white); color: var(--secondary); border: 1px solid var(--secondary); }
-    .hero { background: linear-gradient(135deg, #eef7fb 0%, #ffffff 58%, #fff7ed 100%); padding: 76px 0 70px; }
-    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 44px; align-items: center; }
-    .eyebrow { display: inline-block; padding: 7px 12px; border-radius: 999px; background: #e6f4f1; color: var(--secondary); font-weight: 700; font-size: 14px; margin-bottom: 18px; }
-    h1 { font-size: clamp(38px, 5vw, 62px); line-height: 1.05; margin: 0 0 20px; color: var(--primary); }
-    .lead { font-size: 20px; color: var(--muted); margin-bottom: 28px; max-width: 680px; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 22px; }
-    .trust { color: var(--muted); font-size: 15px; }
-    .hero-card { background: var(--white); border: 1px solid var(--border); border-radius: 18px; padding: 28px; box-shadow: 0 18px 45px rgba(18,60,105,.12); }
-    .score { font-size: 54px; color: var(--secondary); font-weight: 800; margin: 8px 0 0; }
-    .card-title { font-size: 20px; font-weight: 800; color: var(--primary); margin-bottom: 6px; }
-    .bar { height: 10px; background: #e8eef3; border-radius: 999px; overflow: hidden; margin: 12px 0 20px; }
-    .bar span { display: block; height: 100%; background: var(--secondary); width: 72%; }
-    .mini-row { display: flex; justify-content: space-between; border-top: 1px solid var(--border); padding: 12px 0; font-size: 15px; }
-    .tag { padding: 4px 9px; border-radius: 999px; font-size: 12px; font-weight: 700; }
-    .strong { background: #dcfce7; color: #166534; }
-    .average { background: #fef3c7; color: #92400e; }
-    .weak { background: #fee2e2; color: #991b1b; }
-    section { padding: 70px 0; }
-    .section-title { text-align: center; max-width: 760px; margin: 0 auto 38px; }
-    h2 { font-size: clamp(30px, 4vw, 44px); color: var(--primary); margin: 0 0 12px; line-height: 1.15; }
-    .section-title p { color: var(--muted); font-size: 18px; margin: 0; }
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .feature, .exam-card, .form-card { border: 1px solid var(--border); border-radius: 16px; padding: 26px; background: var(--white); box-shadow: 0 8px 24px rgba(31,41,51,.05); }
-    .feature h3, .exam-card h3 { color: var(--primary); margin: 0 0 10px; font-size: 21px; }
-    .feature p, .exam-card p { color: var(--muted); margin: 0; }
-    .problem { background: var(--light); }
-    .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; counter-reset: step; }
-    .step { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 22px; position: relative; }
-    .step::before { counter-increment: step; content: counter(step); display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; background: var(--accent); color: var(--dark); font-weight: 800; margin-bottom: 12px; }
-    .step h3 { margin: 0 0 8px; font-size: 18px; color: var(--primary); }
-    .step p { margin: 0; font-size: 14px; color: var(--muted); }
-    .exams { background: #fff; }
-    .exam-card .meta { color: var(--secondary); font-weight: 700; margin-bottom: 14px; }
-    .coming { opacity: .72; }
-    .contact { background: linear-gradient(135deg, #123c69 0%, #0b7285 100%); color: var(--white); }
-    .contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 40px; align-items: start; }
-    .contact h2 { color: var(--white); }
-    .contact p { color: rgba(255,255,255,.84); }
-    .form-card { background: var(--white); color: var(--dark); }
-    label { display: block; font-weight: 700; margin: 14px 0 6px; color: var(--primary); }
-    input, select, textarea { width: 100%; padding: 13px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 15px; font-family: inherit; }
-    textarea { min-height: 110px; resize: vertical; }
-    .small-note { color: var(--muted); font-size: 13px; margin-top: 12px; }
-    .faq { background: var(--light); }
-    .faq-item { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 22px; margin-bottom: 14px; }
-    .faq-item h3 { margin: 0 0 8px; color: var(--primary); font-size: 19px; }
-    .faq-item p { margin: 0; color: var(--muted); }
-    footer { padding: 30px 0; background: #0f172a; color: #cbd5e1; font-size: 14px; }
-    footer p { margin: 8px 0; }
-    @media (max-width: 900px) {
-      .hero-grid, .contact-grid { grid-template-columns: 1fr; }
-      .grid-3, .steps { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      section { padding: 52px 0; }
-    }
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,Arial,sans-serif;color:var(--text);background:#fff;line-height:1.6} a{text-decoration:none;color:inherit}
+    .container{max-width:1120px;margin:0 auto;padding:0 22px}.nav{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:10}.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 0}.logo{font-weight:800;color:var(--navy);line-height:1.05}.logo span{display:block;font-size:12px;color:var(--blue);font-weight:700}.nav-links{display:flex;gap:22px;font-size:14px;color:#334155}.btn{display:inline-block;background:var(--orange);color:#fff;padding:13px 20px;border-radius:10px;font-weight:700;border:0;cursor:pointer}.btn.secondary{background:#e0f2fe;color:var(--navy)}
+    .hero{background:linear-gradient(135deg,#f0fdfa 0%,#eff6ff 55%,#fff7ed 100%);padding:76px 0}.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center}.eyebrow{color:var(--blue);font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:13px}.hero h1{font-size:52px;line-height:1.05;margin:12px 0 18px;color:var(--navy)}.hero p{font-size:19px;color:#475569;max-width:640px}.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin:28px 0}.trust{font-size:13px;color:#64748b}.mock{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 24px 60px rgba(8,47,73,.14);padding:26px}.score{font-size:58px;font-weight:900;color:var(--blue)}.bar{height:12px;background:#e2e8f0;border-radius:100px;overflow:hidden;margin:12px 0 22px}.bar div{height:100%;width:72%;background:var(--blue)}.report-row{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding:14px 0}.pill{padding:5px 10px;border-radius:999px;background:#ecfdf5;color:#047857;font-weight:700;font-size:12px}.pill.warn{background:#fff7ed;color:#c2410c}.pill.mid{background:#eff6ff;color:#1d4ed8}
+    section{padding:70px 0}.section-title{font-size:34px;line-height:1.15;color:var(--navy);margin:0 0 14px}.section-sub{color:var(--muted);font-size:18px;max-width:760px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 10px 28px rgba(15,23,42,.05)}.card h3{margin:0 0 8px;color:var(--navy)}.icon{width:42px;height:42px;border-radius:12px;background:#ccfbf1;display:flex;align-items:center;justify-content:center;font-weight:900;color:var(--blue);margin-bottom:16px}.soft{background:var(--soft)}
+    .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:32px}.step{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}.num{width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:10px}.assessments{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}.assessment{border:1px solid var(--line);border-radius:18px;padding:22px;background:#fff}.assessment small{color:var(--blue);font-weight:800}.assessment h3{color:var(--navy);margin:8px 0}.tag{font-size:12px;background:#f1f5f9;color:#475569;padding:5px 9px;border-radius:999px;display:inline-block;margin-top:8px}
+    .form-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:32px;align-items:start}.form-box{background:#fff;border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:0 14px 36px rgba(15,23,42,.08)}label{font-weight:700;color:#334155;display:block;margin-bottom:7px}input,select,textarea{width:100%;padding:13px 14px;border:1px solid #cbd5e1;border-radius:10px;font:inherit;margin-bottom:16px}input:focus,select:focus,textarea:focus{outline:3px solid #ccfbf1;border-color:var(--blue)}.fine{font-size:12px;color:#64748b}.faq{max-width:850px}.faq-item{border-bottom:1px solid var(--line);padding:18px 0}.faq-item h3{margin:0;color:var(--navy)}footer{background:#0f172a;color:#cbd5e1;padding:34px 0;font-size:13px}.footer-grid{display:grid;grid-template-columns:1fr 2fr;gap:28px}.disclaimer{color:#94a3b8}
+    @media(max-width:860px){.hero-grid,.form-wrap,.footer-grid{grid-template-columns:1fr}.hero h1{font-size:39px}.cards,.steps,.assessments{grid-template-columns:1fr}.nav-links{display:none}.hero{padding:52px 0}section{padding:52px 0}}
   </style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <a href="#top" class="brand">ERA <span>Exam Readiness Assessment</span></a>
-      <nav class="nav-links">
-        <a href="#how">How it works</a>
-        <a href="#assessments">Assessments</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="top">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">Student-focused readiness checks</div>
-          <h1>Know If You're Ready Before Test Day</h1>
-          <p class="lead">ERA helps students measure exam readiness, identify weak topics, and prepare with greater confidence before taking important exams.</p>
-          <div class="hero-actions">
-            <a class="btn" href="#contact">Request Assessment</a>
-            <a class="btn btn-light" href="#assessments">View Assessments</a>
-          </div>
-          <p class="trust">Designed for learners preparing for college credit exams, school exams, admissions tests, and professional assessments.</p>
-        </div>
-        <div class="hero-card" aria-label="Sample readiness report preview">
-          <div class="card-title">Sample Readiness Report</div>
-          <p style="margin:0;color:var(--muted);">Overall readiness score</p>
-          <div class="score">72%</div>
-          <div class="bar"><span></span></div>
-          <div class="mini-row"><span>Core Concepts</span><span class="tag strong">Strong</span></div>
-          <div class="mini-row"><span>Application Questions</span><span class="tag average">Average</span></div>
-          <div class="mini-row"><span>Research & Analysis</span><span class="tag weak">Needs Focus</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="problem">
-      <div class="container section-title">
-        <h2>Most Students Study Without Knowing Where They Stand</h2>
-        <p>ERA gives students a structured way to understand strengths, weaknesses, and areas that need focused preparation.</p>
-      </div>
-      <div class="container grid-3">
-        <div class="feature"><h3>Identify Weak Topics</h3><p>See which areas require additional review before the actual exam.</p></div>
-        <div class="feature"><h3>Use Time Better</h3><p>Focus preparation on the topics that can improve readiness the most.</p></div>
-        <div class="feature"><h3>Build Confidence</h3><p>Make exam preparation more measurable, targeted, and less stressful.</p></div>
-      </div>
-    </section>
-
-    <section id="how">
-      <div class="container section-title">
-        <h2>How ERA Works</h2>
-        <p>A simple readiness process designed for students who want clarity before test day.</p>
-      </div>
-      <div class="container steps">
-        <div class="step"><h3>Choose Exam</h3><p>Select the exam or subject area you are preparing for.</p></div>
-        <div class="step"><h3>Request Access</h3><p>Submit your interest using the contact form.</p></div>
-        <div class="step"><h3>Take Assessment</h3><p>Complete the readiness assessment when access is provided.</p></div>
-        <div class="step"><h3>Review Report</h3><p>Receive topic-wise performance insights and recommendations.</p></div>
-        <div class="step"><h3>Prepare Better</h3><p>Use the report to focus your study plan.</p></div>
-      </div>
-    </section>
-
-    <section id="assessments" class="exams">
-      <div class="container section-title">
-        <h2>Available and Upcoming Assessments</h2>
-        <p>We are starting with selected college credit exam readiness assessments and expanding to other exams.</p>
-      </div>
-      <div class="container grid-3">
-        <div class="exam-card"><div class="meta">College Credit Exam</div><h3>CLEP® Introductory Sociology</h3><p>Measure readiness across major sociology concepts and topic areas.</p><br><a class="btn" href="#contact">Request Assessment</a></div>
-        <div class="exam-card"><div class="meta">College Credit Exam</div><h3>CLEP® Introductory Psychology</h3><p>Check readiness across psychology foundations, theories, and applications.</p><br><a class="btn" href="#contact">Request Assessment</a></div>
-        <div class="exam-card"><div class="meta">College Credit Exam</div><h3>CLEP® College Mathematics</h3><p>Assess readiness in core mathematics skills and problem-solving areas.</p><br><a class="btn" href="#contact">Request Assessment</a></div>
-        <div class="exam-card coming"><div class="meta">Coming Soon</div><h3>SAT® Readiness</h3><p>Targeted assessment for students preparing for SAT subject areas.</p></div>
-        <div class="exam-card coming"><div class="meta">Coming Soon</div><h3>AP® Exam Readiness</h3><p>Readiness checks for selected Advanced Placement exam subjects.</p></div>
-        <div class="exam-card coming"><div class="meta">Coming Soon</div><h3>Professional Exams</h3><p>Diagnostic readiness assessments for selected professional exams.</p></div>
-      </div>
-    </section>
-
-    <section id="contact" class="contact">
-      <div class="container contact-grid">
-        <div>
-          <h2>Request an ERA Assessment</h2>
-          <p>Submit your details and our team will contact you with the next steps. This form is ideal while the full automated testing workflow is being set up.</p>
-          <p><strong>Email:</strong> info@equipteachers.com</p>
-        </div>
-        <div class="form-card">
-          <form name="era-assessment-request" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-            <input type="hidden" name="form-name" value="era-assessment-request" />
-            <p style="display:none;"><label>Do not fill this out: <input name="bot-field" /></label></p>
-
-            <label for="name">Full Name</label>
-            <input id="name" name="name" type="text" placeholder="Your name" required />
-
-            <label for="email">Email Address</label>
-            <input id="email" name="email" type="email" placeholder="you@example.com" required />
-
-            <label for="exam">Assessment Interested In</label>
-            <select id="exam" name="assessment_interest" required>
-              <option value="">Select an assessment</option>
-              <option>CLEP Introductory Sociology</option>
-              <option>CLEP Introductory Psychology</option>
-              <option>CLEP College Mathematics</option>
-              <option>SAT Readiness</option>
-              <option>AP Exam Readiness</option>
-              <option>Other</option>
-            </select>
-
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Tell us what exam you are preparing for and when you plan to take it."></textarea>
-
-            <button class="btn" type="submit" style="margin-top:18px;width:100%;">Submit Request</button>
-            <p class="small-note">Your request will be captured through Netlify Forms. You can view submissions in your Netlify dashboard and set email notifications to info@equipteachers.com.</p>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <section class="faq">
-      <div class="container section-title"><h2>Frequently Asked Questions</h2></div>
-      <div class="container">
-        <div class="faq-item"><h3>Is ERA an official exam?</h3><p>No. ERA is an independent readiness assessment designed to help students prepare more effectively.</p></div>
-        <div class="faq-item"><h3>Does ERA guarantee a score?</h3><p>No assessment can guarantee an official exam score. ERA helps indicate readiness and identify areas for improvement.</p></div>
-        <div class="faq-item"><h3>How long does an assessment take?</h3><p>Most readiness assessments are designed to be completed in about 20–45 minutes, depending on the exam.</p></div>
-      </div>
-    </section>
+  <header class="nav"><div class="container nav-inner"><a class="logo" href="#">ERA<span>Exam Readiness Assessment</span></a><nav class="nav-links"><a href="#assessments">Assessments</a><a href="#report">Sample Report</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></nav><a class="btn" href="#contact">Request Assessment</a></div></header>
+  <main>
+    <section class="hero"><div class="container hero-grid"><div><div class="eyebrow">For students preparing for important exams</div><h1>Know If You're Ready Before Test Day</h1><p>ERA helps you measure readiness, identify weak topics, and focus your preparation before you invest time and money in the official exam.</p><div class="hero-actions"><a class="btn" href="#contact">Request Assessment</a><a class="btn secondary" href="#report">View Sample Report</a></div><div class="trust">Initial assessments planned for CLEP® subjects. More exams coming soon.</div></div><div class="mock" id="report"><small class="eyebrow">Sample Readiness Snapshot</small><div class="score">72%</div><div class="bar"><div></div></div><div class="report-row"><strong>Readiness Level</strong><span class="pill mid">Developing</span></div><div class="report-row"><strong>Strong Areas</strong><span class="pill">Core Concepts</span></div><div class="report-row"><strong>Focus Areas</strong><span class="pill warn">Application Questions</span></div><p class="fine">Your actual report will include topic-wise analysis and next-step recommendations.</p></div></div></section>
+    <section><div class="container"><h2 class="section-title">Most Students Study Blindly</h2><p class="section-sub">ERA is designed to answer the practical questions students have before test day: Am I ready? Which topics are weak? What should I study next?</p><div class="cards"><div class="card"><div class="icon">1</div><h3>Measure Readiness</h3><p>Get a clear indication of your current preparation level before the official exam.</p></div><div class="card"><div class="icon">2</div><h3>Find Weak Topics</h3><p>Understand which content areas need the most attention.</p></div><div class="card"><div class="icon">3</div><h3>Study Smarter</h3><p>Use the report to focus your remaining study time more effectively.</p></div></div></div></section>
+    <section class="soft"><div class="container"><h2 class="section-title">How ERA Works</h2><div class="steps"><div class="step"><div class="num">1</div><strong>Request access</strong><p>Tell us which assessment you need.</p></div><div class="step"><div class="num">2</div><strong>Take assessment</strong><p>Complete a focused readiness test.</p></div><div class="step"><div class="num">3</div><strong>Receive report</strong><p>Review strengths and gaps.</p></div><div class="step"><div class="num">4</div><strong>Focus study</strong><p>Target the right topics.</p></div><div class="step"><div class="num">5</div><strong>Retest later</strong><p>Track improvement.</p></div></div></div></section>
+    <section id="assessments"><div class="container"><h2 class="section-title">Planned Assessments</h2><p class="section-sub">We are starting with selected college-credit exam readiness assessments and will expand based on student interest.</p><div class="assessments"><div class="assessment"><small>CLEP®</small><h3>Introductory Sociology</h3><p>Readiness assessment for core sociology concepts and applications.</p><span class="tag">Request access</span></div><div class="assessment"><small>CLEP®</small><h3>Introductory Psychology</h3><p>Assess preparation across major psychology domains.</p><span class="tag">Coming soon</span></div><div class="assessment"><small>CLEP®</small><h3>College Mathematics</h3><p>Check readiness across key college mathematics topics.</p><span class="tag">Coming soon</span></div></div></div></section>
+    <section class="soft" id="contact"><div class="container form-wrap"><div><div class="eyebrow">Get started</div><h2 class="section-title">Request an Exam Readiness Assessment</h2><p class="section-sub">Complete this form and our team will contact you with next steps. Since the platform is being rolled out in stages, requests are currently handled manually.</p></div><div class="form-box"><form name="era-assessment-request" method="POST" data-netlify="true" netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="era-assessment-request" /><p style="display:none"><label>Don’t fill this out: <input name="bot-field" /></label></p><label for="name">Full Name</label><input id="name" name="name" type="text" required /><label for="email">Email Address</label><input id="email" name="email" type="email" required /><label for="assessment">Assessment of Interest</label><select id="assessment" name="assessment" required><option value="">Select an assessment</option><option>CLEP Introductory Sociology</option><option>CLEP Introductory Psychology</option><option>CLEP College Mathematics</option><option>CLEP Biology</option><option>CLEP College Algebra</option><option>Other</option></select><label for="message">Additional Information</label><textarea id="message" name="message" rows="5" placeholder="Tell us your target exam date or what you are preparing for."></textarea><button class="btn" type="submit">Submit Request</button><p class="fine">Your request will be sent to the EquipTeachers team.</p></form></div></div></section>
+    <section id="faq"><div class="container faq"><h2 class="section-title">Frequently Asked Questions</h2><div class="faq-item"><h3>Is ERA an official CLEP® exam?</h3><p>No. ERA is an independent readiness assessment and is not an official exam.</p></div><div class="faq-item"><h3>Will this guarantee a passing score?</h3><p>No. ERA helps indicate readiness and identify areas for improvement. It does not guarantee official exam performance.</p></div><div class="faq-item"><h3>How long will the assessment take?</h3><p>Most readiness assessments are expected to take about 20–40 minutes depending on the subject.</p></div></div></section>
   </main>
-
-  <footer>
-    <div class="container">
-      <p><strong>ERA – Exam Readiness Assessment</strong> | Powered by EquipTeachers</p>
-      <p>CLEP®, SAT®, and AP® are registered trademarks of the College Board. USMLE® is a registered trademark of the National Board of Medical Examiners. These organizations are not affiliated with and do not endorse ERA or EquipTeachers.</p>
-    </div>
-  </footer>
+  <footer><div class="container footer-grid"><div><strong>ERA</strong><br/>Exam Readiness Assessment<br/>Powered by EquipTeachers</div><div class="disclaimer">CLEP®, SAT®, and AP® are registered trademarks of the College Board. USMLE® is a registered trademark of the National Board of Medical Examiners. These organizations are not affiliated with and do not endorse ERA or EquipTeachers. ERA is an independent readiness and diagnostic assessment service.</div></div></footer>
 </body>
 </html>
