@@ -36,8 +36,8 @@
 
     .hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#f7fbff 0%,#eef6ff 62%,#fff7ef 100%);border-bottom:1px solid var(--line)}
     .hero:after{content:"";position:absolute;left:-10%;bottom:-16%;width:70%;height:30%;background:radial-gradient(ellipse at center,rgba(36,107,184,.14),rgba(36,107,184,0) 65%);transform:rotate(8deg)}
-    .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:.92fr 1.08fr;gap:54px;align-items:center;padding:78px 0 56px}
-    .brand-logo-large{width:min(530px,100%);height:auto;display:block;margin:0 0 32px}
+    .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:.92fr 1.08fr;gap:54px;align-items:center;padding:20px 0 35px}
+    .brand-logo-large{width:min(530px,100%);height:auto;display:block;margin:0 0 5px}
     .hero-title{font-size:43px;line-height:1.12;color:var(--navy2);margin:0 0 20px;font-weight:950;letter-spacing:-1.4px}
     .hero-copy{font-size:20px;color:#25324a;max-width:550px;margin:0 0 32px}
     .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px}
@@ -72,7 +72,7 @@
     footer{background:#0f172a;color:#cbd5e1;padding:34px 0;font-size:13px}.footer-grid{display:grid;grid-template-columns:.8fr 2.2fr;gap:28px}.footer-logo{height:44px;width:auto;display:block;margin-bottom:12px}.disclaimer{color:#94a3b8}
 
     @media(max-width:980px){.hero-grid,.form-grid,.cta-card{grid-template-columns:1fr}.features{grid-template-columns:1fr 1fr}.feature{border-right:0;border-bottom:1px solid var(--line);padding-bottom:24px}.steps{grid-template-columns:1fr}.hero-title{font-size:36px}.big-score{font-size:54px}.big-grade{font-size:60px}.nav-links{display:none}.nav-inner{height:80px}.brand-logo-large{margin-left:auto;margin-right:auto}.hero-left{text-align:center}.hero-copy{margin-left:auto;margin-right:auto}.hero-actions{justify-content:center}.trust{justify-content:center}}
-    @media(max-width:620px){.container{padding:0 18px}.nav-logo img{height:44px}.hero-grid{padding:48px 0}.hero-title{font-size:31px}.report-head{font-size:17px}.score-grade{grid-template-columns:1fr}.score-box:first-child{border-right:0;border-bottom:1px solid var(--line);padding-bottom:18px}.features{grid-template-columns:1fr}.report-table{font-size:12px}.topic{width:42%}.perf{width:28%}.report-foot{flex-direction:column}.footer-grid{grid-template-columns:1fr}.cta-card{padding:24px}.cta-illustration{width:110px;height:110px;font-size:50px}}
+    @media(max-width:620px){.container{padding:0 18px}.nav-logo img{height:44px}.hero-grid{padding:24px 0 32px}.hero-title{font-size:31px}.report-head{font-size:17px}.score-grade{grid-template-columns:1fr}.score-box:first-child{border-right:0;border-bottom:1px solid var(--line);padding-bottom:18px}.features{grid-template-columns:1fr}.report-table{font-size:12px}.topic{width:42%}.perf{width:28%}.report-foot{flex-direction:column}.footer-grid{grid-template-columns:1fr}.cta-card{padding:24px}.cta-illustration{width:110px;height:110px;font-size:50px}}
   </style>
 </head>
 <body>
@@ -105,7 +105,7 @@
         </div>
 
         <aside class="report-card" id="sample-report" aria-label="Sample readiness report snapshot">
-          <div class="report-head">Sample Readiness Report Snapshot</div>
+          <div class="report-head">Actual Diagnostic Report Preview</div>
           <div class="report-body">
             <div class="score-grade">
               <div class="score-box">
@@ -139,7 +139,7 @@
 
     <section id="available-assessments" style="background:#f8fbff;border-top:1px solid #d9e2ef;border-bottom:1px solid #d9e2ef;">
       <div class="container center">
-        <h2 class="section-title">Available Assessments</h2>
+        <h2 class="section-title">Currently Available</h2>
         <p class="section-sub">Start with our currently available readiness assessments and receive a detailed diagnostic report.</p>
         <div class="steps">
           <div class="step">
@@ -154,7 +154,7 @@
           </div>
           <div class="step">
             <div class="num">→</div>
-            <h3>Coming Soon</h3>
+            <h3>Additional Assessments Coming Soon</h3>
             <p>Additional CLEP assessments and other exam readiness assessments currently in development.</p>
           </div>
         </div>
